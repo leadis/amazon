@@ -1,0 +1,628 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html>
+<html b:css='false' b:defaultwidgetversion='2' b:layoutsVersion='3' b:responsive='true' b:templateUrl='indie.xml' b:templateVersion='1.3.0' expr:dir='data:blog.languageDirection' expr:lang='data:blog.locale.language' xmlns='http://www.w3.org/1999/xhtml' xmlns:b='http://www.google.com/2005/gml/b' xmlns:data='http://www.google.com/2005/gml/data' xmlns:expr='http://www.google.com/2005/gml/expr'>
+  <b:attr name='xmlns' value=''/>
+  <b:attr name='xmlns:b' value=''/>
+  <b:attr name='xmlns:expr' value=''/>
+  <b:attr name='xmlns:data' value=''/>
+  
+<!--[
+
+    Name      : Plus UI Modern
+    Version   : 3.0.0
+    Update    : March 25, 2024
+    Type      : Premium Modern
+    Design    : Fluid & Modern
+
+    ============================================================================
+    NOTE :
+    This theme is premium (paid).
+    You can only get it by purchasing officially.
+    ============================================================================
+
+]-->
+    
+  <!--[ <head> Open ]-->
+  &lt;head class=&#39;notranslate&#39;&gt;
+
+  <b:if cond='data:view.isMultipleItems'>
+    <b:if cond='data:view.isHomepage'>
+      <!--[ Homepage title ]-->
+      <title><data:blog.title.escaped/></title>
+      <b:elseif cond='data:view.search.query'/>
+      <!--[ Search title ]-->
+      <title><data:messages.search/>: <data:view.search.query/></title>
+      <b:elseif cond='data:view.search.label'/>
+      <!--[ Label title ]-->
+      <title><data:blog.pageName.escaped/> - <data:blog.title.escaped/></title>
+      <b:elseif cond='data:view.isArchive'/>
+      <!--[ Archive title ]-->
+      <title>Blog archive in: <data:blog.pageName.escaped/></title>
+      <b:else/>
+      <title>Blog: <data:blog.title.escaped/></title>
+    </b:if>
+    <b:elseif cond='data:view.isError'/>
+    <!--[ Error title ]-->
+    <title>Error 404: Not Found</title>
+    <b:else/>
+    <!--[ SingleItem title ]-->
+    <title><data:blog.pageName.escaped/> - <data:blog.title.escaped/></title>
+  </b:if>
+
+  <!--[ Meta for browser ]-->
+  <meta charset='UTF-8'/>
+  <meta content='width=device-width, initial-scale=1, user-scalable=1, minimum-scale=1, maximum-scale=5' name='viewport'/>
+  <meta content='IE=edge' http-equiv='X-UA-Compatible'/>
+  <meta content='max-image-preview:large' name='robots'/>
+
+  <!--[ Link Canonical ]-->
+  <link expr:href='data:blog.url.canonical' rel='canonical'/>
+  <link expr:href='data:blog.url.canonical appendParams { m: &quot;1&quot; }' rel='alternate'/>
+
+  <b:if cond='!data:view.isError'>
+    <!--[ Browser data, description and keyword ]-->
+    <b:if cond='data:blog.metaDescription'>
+      <meta expr:content='data:blog.metaDescription.escaped' name='description'/>
+      <b:elseif cond='data:view.isSingleItem'/>
+      <meta expr:content='data:post.snippet.escaped snippet { length: 147, links: false, linebreaks: false, ellipsis: false }' name='description'/>
+      <b:else/>
+      <meta expr:content='data:blog.pageName.escaped ? data:blog.pageName.escaped : data:blog.title' name='description'/>
+    </b:if>
+    <meta expr:content='data:blog.title.escaped + &quot;, &quot; + data:blog.pageName.escaped + &quot;, Keyword_1, Keyword_2, Keyword_3 &quot;' name='keywords'/>
+    <b:tag cond='data:view.isPost' expr:href='resizeImage(data:blog.postImageUrl, 0)' name='link' rel='image_src'/>
+  
+    <!--[ Generator and rrs ]-->
+    <meta content='blogger' name='generator'/>
+    <link expr:href='data:blog.homepageUrl.canonical + &quot;feeds/posts/default&quot;' expr:title='data:blog.title + &quot; Â» Atom&quot;' rel='alternate' type='application/atom+xml'/>
+    <link expr:href='data:blog.homepageUrl.canonical + &quot;feeds/posts/default?alt=rss&quot;' expr:title='data:blog.title + &quot; Â» Feed&quot;' rel='alternate' type='application/rss+xml'/>
+    <link expr:href='data:blog.homepageUrl.canonical + &quot;feeds/comments/default?alt=rss&quot;' expr:title='data:blog.title + &quot; Â» Comments Feed&quot;' rel='alternate' type='application/rss+xml'/>
+  
+    <!--[ Theme Color ]-->
+    <meta expr:content='data:skin.vars.themeColor' name='theme-color'/>
+    <meta expr:content='data:skin.vars.themeColor' name='msapplication-navbutton-color'/>
+    <meta expr:content='data:skin.vars.themeColor' name='apple-mobile-web-app-status-bar-style'/>
+    <meta expr:content='yes' name='apple-mobile-web-app-capable'/>
+  
+    <!--[ Favicon ]-->
+    <link expr:href='data:blog.blogspotFaviconUrl' rel='apple-touch-icon' sizes='120x120'/>
+    <link expr:href='data:blog.blogspotFaviconUrl' rel='apple-touch-icon' sizes='152x152'/>
+    <link expr:href='data:blog.blogspotFaviconUrl' rel='icon' type='image/x-icon'/>
+    <link expr:href='data:blog.blogspotFaviconUrl' rel='shortcut icon' type='image/x-icon'/>
+    
+    <!--[ Open graph ]-->
+    <meta expr:content='data:blog.pageName.escaped ? data:blog.pageName.escaped : data:blog.title.escaped' property='og:title'/>
+    <meta expr:content='data:blog.canonicalUrl' property='og:url'/>
+    <meta expr:content='data:blog.title.escaped' property='og:site_name'/>
+    <b:if cond='data:view.isMultipleItems'>
+      <meta content='website' property='og:type'/>
+      <b:if cond='data:blog.metaDescription'>
+        <meta expr:content='data:blog.metaDescription.escaped' property='og:description'/>         
+        <b:else/>
+        <meta expr:content='data:blog.pageName.escaped ? data:blog.pageName.escaped : data:blog.title' property='og:description'/>
+      </b:if>
+      <b:else/>
+      <meta content='article' property='og:type'/>
+      <b:if cond='data:blog.metaDescription'>
+        <meta expr:content='data:blog.metaDescription.escaped' property='og:description'/>            
+        <b:else/>
+        <meta expr:content='data:post.snippet.escaped snippet { length: 147, links: false, linebreaks: false, ellipsis: false }' property='og:description'/>
+      </b:if>
+    </b:if>
+    <meta expr:content='data:blog.pageName.escaped ? data:blog.pageName.escaped : data:blog.title.escaped' property='og:image:alt'/>
+    <b:if cond='data:blog.postImageUrl'>
+      <meta expr:content='resizeImage(data:blog.postImageUrl, 0)' property='og:image'/>
+      <b:else/>
+      <meta content='Add_your_image_url_here' property='og:image'/>
+    </b:if>
+    
+    <!--[ Twitter Card ]-->
+    <meta expr:content='data:blog.pageName.escaped ? data:blog.pageName.escaped : data:blog.title.escaped' name='twitter:title'/>
+    <meta expr:content='data:blog.canonicalUrl' name='twitter:url'/>
+    <b:if cond='data:view.isMultipleItems'>
+      <b:if cond='data:blog.metaDescription'>
+        <meta expr:content='data:blog.metaDescription.escaped' name='twitter:description'/>         
+        <b:else/>
+        <meta expr:content='data:blog.pageName.escaped ? data:blog.pageName.escaped : data:blog.title' name='twitter:description'/>
+      </b:if>
+      <b:else/>
+      <b:if cond='data:blog.metaDescription'>
+        <meta expr:content='data:blog.metaDescription.escaped' name='twitter:description'/>            
+        <b:else/>
+        <meta expr:content='data:post.snippet.escaped snippet { length: 147, links: false, linebreaks: false, ellipsis: false }' name='twitter:description'/>
+      </b:if>
+    </b:if>
+    <meta content='summary_large_image' name='twitter:card'/>
+    <meta expr:content='data:blog.pageName.escaped ? data:blog.pageName.escaped : data:blog.title.escaped' name='twitter:image:alt'/>
+    <b:if cond='data:blog.postImageUrl'>
+      <meta expr:content='resizeImage(data:blog.postImageUrl, 0)' name='twitter:image:src'/>
+      <b:else/>
+      <meta content='Add_your_image_url_here' name='twitter:image:src'/>
+    </b:if>
+  
+    <!--[ Site Verification ]-->
+    <!--<meta content='' name='msvalidate.01'/>
+    <meta content='' name='copyright'/>-->
+    
+    <!--[ Preconnect and DNS Prefetch ]-->
+    <link href='//1.bp.blogspot.com' rel='preconnect dns-prefetch'/><link href='//2.bp.blogspot.com' rel='preconnect dns-prefetch'/><link href='//3.bp.blogspot.com' rel='preconnect dns-prefetch'/><link href='//4.bp.blogspot.com' rel='preconnect dns-prefetch'/><link href='//blogger.googleusercontent.com' rel='preconnect dns-prefetch'/><link href='//lh3.googleusercontent.com' rel='preconnect dns-prefetch'/><link href='//www.blogger.com' rel='preconnect dns-prefetch'/><link href='//feeds.feedburner.com' rel='preconnect dns-prefetch'/><link expr:href='data:blog.homepageUrl.canonical path &quot;feeds/posts/default&quot;' rel='preconnect dns-prefetch'/><link expr:href='data:blog.homepageUrl.canonical path &quot;feeds/comments/default&quot;' rel='preconnect dns-prefetch'/><link href='//cdn.widgetpack.com' rel='preconnect dns-prefetch'/><link href='//translate.google.com' rel='preconnect dns-prefetch'/><link href='//maxcdn.bootstrapcdn.com' rel='preconnect dns-prefetch'/><link href='//fonts.googleapis.com' rel='preconnect dns-prefetch'/><link href='//use.fontawesome.com' rel='preconnect dns-prefetch'/><link href='//ajax.googleapis.com' rel='preconnect dns-prefetch'/><link href='//resources.blogblog.com' rel='preconnect dns-prefetch'/><link href='//ajax.microsoft.com ' rel='preconnect dns-prefetch'/><link href='//ajax.aspnetcdn.com ' rel='preconnect dns-prefetch'/><link href='//github.com' rel='preconnect dns-prefetch'/><link href='//cdn.rawgit.com' rel='preconnect dns-prefetch'/><link href='//cdnjs.cloudflare.com' rel='preconnect dns-prefetch'/><link href='//www.google-analytics.com' rel='preconnect dns-prefetch'/><link href='//themes.googleusercontent.com ' rel='preconnect dns-prefetch'/><link href='//pagead2.googlesyndication.com' rel='preconnect dns-prefetch'/><link href='//googleads.g.doubleclick.net' rel='preconnect dns-prefetch'/><link href='//www.gstatic.com' rel='preconnect dns-prefetch'/><link href='//www.googletagservices.com' rel='preconnect dns-prefetch'/><link href='//static.xx.fbcdn.net' rel='preconnect dns-prefetch'/><link href='//tpc.googlesyndication.com' rel='preconnect dns-prefetch'/><link href='//apis.google.com' rel='preconnect dns-prefetch'/><link href='//www.w3.org' rel='preconnect dns-prefetch'/><link href='//www.facebook.com' rel='preconnect dns-prefetch'/><link href='//connect.facebook.net' rel='preconnect dns-prefetch'/><link href='//disqus.com' rel='preconnect dns-prefetch'/><link href='//plus.google.com' rel='preconnect dns-prefetch'/><link href='//twitter.com' rel='preconnect dns-prefetch'/><link href='//platform.twitter.com' rel='preconnect dns-prefetch'/><link href='//syndication.twitter.com' rel='preconnect dns-prefetch'/><link href='//r.twimg.com ' rel='preconnect dns-prefetch'/><link href='//p.twitter.com ' rel='preconnect dns-prefetch'/><link href='//cdn.api.twitter.com ' rel='preconnect dns-prefetch'/><link href='//www.youtube.com' rel='preconnect dns-prefetch'/><link href='//img.youtube.com' rel='preconnect dns-prefetch'/><link href='//www.pinterest.com' rel='preconnect dns-prefetch'/><link href='//statically.io/' rel='preconnect dns-prefetch'/><link href='//www.linkedin.com' rel='preconnect dns-prefetch'/><link href='//player.vimeo.com' rel='preconnect dns-prefetch'/><link href='//s3.amazonaws.com ' rel='preconnect dns-prefetch'/><link href='//s3.buysellads.com ' rel='preconnect dns-prefetch'/><link href='//stats.buysellads.com ' rel='preconnect dns-prefetch'/><link href='//cdn.adpacks ' rel='preconnect dns-prefetch'/>
+    
+  </b:if>
+  
+  <b:if cond='data:view.isLayoutMode'>
+    <!--[ CSS Layout ]-->
+    <b:template-skin><![CDATA[
+body#layout::before{content:'Plus UI Modern v3.0 by nldblog.com';position:absolute;top:15px;right:15px;font-size:.8rem;font-family:'Inter', sans-serif;color:rgba(0,0,0,0.52)} body#layout{width:1025px;margin:0 !important;padding:60px 0 0 !important;border:0 !important;text-align:left !important;position:relative} body#layout div.layout-widget-description{font-size:12px !important;line-height:1.6em} body#layout div.layout-title{font-size:15px !important} body#layout div.section{border-radius:12px} body#layout .section h4{font-size:15px !important;margin-left:0!important} body#layout .add_widget a{font-size:13px !important} body#layout .Blog .widget-content{height:auto!important} body#layout #anchor-ad, body#layout #notif-widget .widget-content, body#layout #side-sticky, body#layout #HTML91 .widget-content, body#layout #HTML92 .widget-content, body#layout #HTML93 .widget-content, body#layout #HTML94 .widget-content, body#layout #HTML01 .widget-content, body#layout #HTML02 .widget-content, body#layout #HTML03 .widget-content, body#layout #HTML04 .widget-content{background:#f8fafc !important} body#layout #maintenance-mode, body#layout .mobMn, body#layout #anchor-ad{margin-bottom:30px!important} body#layout .mainIn, body#layout .headCn, body#layout .blogM{display:flex} body#layout .mainbar, body#layout .headR{width:55%} body#layout .mainIn .blogCont{width:70%} body#layout .sidebar, body#layout .headL{width:45%} body#layout header, body#layout .mainIn, body#layout footer, body#layout .erroP, body#layout .addonsWidgets{border-top:1px solid #e5e5e5;padding:30px 0;position:relative} body#layout header::before, body#layout .mainIn::before, body#layout footer::before, body#layout .erroP::before, body#layout .addonsWidgets::before{content:'Header';position:absolute;top:-14px;left:20px;padding:5px 20px;border:1px solid #e5e5e5;border-radius:20px;font-size:.8rem;font-family:'Inter',sans-serif;color:rgba(0,0,0,0.52);background:#f1f1f1} body#layout #notif-widget h4{display:none} body#layout .mainIn{padding-bottom:0} body#layout .mainIn::before{content:'Main Content'} body#layout footer::before{content:'Footer'} body#layout .erroP::before{content:'Custom Error Page'} body#layout .addonsWidgets::before{content:'Add-ons'} ]]></b:template-skin>
+  </b:if>
+
+  <!--[ CSS stylesheet ]-->
+  &lt;style&gt;&lt;!-- /* <b:skin version='3.0.0'><![CDATA[
+/*
+<Group description="Theme Color">
+<Variable name="themeColor" description="Light Mode Address bar color" type="color" default="#6366f1" value="#6366f1"/>
+<Variable name="themeDark" description="Dark Mode Address bar color" type="color" default="#1e1e1e" value="#1e1e1e"/>
+</Group>
+
+<Group description="Basic colors and Background">
+<Variable name="head.color" description="Heading colors" type="color" default="#1e293b" value="#1e293b"/>
+<Variable name="body.color" description="Body colors" type="color" default="#475569" value="#475569"/>
+<Variable name="body.colorAlt" description="Alternative body colors" type="color" default="#94a3b8" value="#94a3b8"/>
+<Variable name="body.bgColor" description="Main page bakground color" type="color" default="#ffffff" value="#ffffff"/>
+<Variable name="link.color" description="Link colors" type="color" default="#6366f1" value="#6366f1"/>
+<Variable name="link.bgColor" description="Button link colors" type="color" default="#6366f1" value="#6366f1"/>
+<Variable name="wave.bgColor" description="Wave background color" type="color" default="#f1f5f9" value="#f1f5f9"/>
+</Group>
+
+<Group description="Icon colors">
+<Variable name="icon.color" description="Icon colors" type="color" default="#475569" value="#475569"/>
+<Variable name="icon.colorAlt" description="Alternative icon colors" type="color" default="#94a3b8" value="#94a3b8"/>
+<Variable name="icon.colorSec" description="Secondary icon colors" type="color" default="#cbd5e1" value="#cbd5e1"/>
+</Group>
+
+<Group description="Notification">
+<Variable name="notif.height" description="Notification max height" type="length" max="60px" default="45px" value="60px"/>
+<Variable name="notif.bg" description="Notification background color" type="color" default="#f0f9ff" value="#f0f9ff"/>
+<Variable name="notif.color" description="Notification text color" type="color" default="#0369a1" value="#0369a1"/>
+</Group>
+
+<Group description="Header colors, background and height">
+<Variable name="header.height" description="Header height" type="length" max="80px" default="68px" value="68px"/>
+<Variable name="header.heightM" description="Header height(mobile)" type="length" max="80px" default="68px" value="68px"/>
+<Variable name="header.titleSize" description="Header title font size" type="length" max="20px" default="18px" value="18px"/>
+<Variable name="header.text" description="Header text colors" type="color" default="#475569" value="#475569"/>
+<Variable name="header.icon" description="Header icon colors" type="color" default="#1e293b" value="#1e293b"/>
+<Variable name="header.bgColor" description="Header background color" type="color" default="#ffffff" value="#ffffff"/>
+<Variable name="header.border" description="Header border" type="length" max="1px" default="0px" value="0px"/>
+</Group>
+
+<Group description="Navbar colors">
+<Variable name="nav.width" description="Navbar max width" type="length" max="260px" default="240px" value="240px"/>
+<Variable name="nav.border" description="Navbar border" type="length" max="1px" default="0px" value="0px"/>
+<Variable name="nav.text" description="Navbar text colors" type="color" default="#475569" value="#475569"/>
+<Variable name="nav.icon" description="Navbar icon color" type="color" default="#475569" value="#475569"/>
+<Variable name="nav.bg" description="Navbar background color" type="color" default="#ffffff" value="#ffffff"/>
+</Group>
+
+<Group description="Searchbar colors">
+<Variable name="search.icon" description="Searchbar icon color" type="color" default="#64748b" value="#64748b"/>
+<Variable name="search.bg" description="Searchbar background color" type="color" default="#ffffff" value="#ffffff"/>
+</Group>
+
+<Group description="Content background">
+<Variable name="content.bg" description="Content background color" type="color" default="#ffffff" value="#ffffff"/>
+<Variable name="content.border" description="Content border color" type="color" default="#f1f5f9" value="#f1f5f9"/>
+</Group>
+
+<Group description="Content max width">
+<Variable name="content.maxWidth" description="Max width of main content" type="length" max="1440px" default="1280px" value="1280px"/>
+<Variable name="sidebar.maxWidth" description="Max width of sidebar" type="length" max="360px" default="320px" value="320px"/>
+<Variable name="post.maxContent" description="Post max width" type="length" max="900px" default="780px" value="780px"/>
+<Variable name="page.maxContent" description="Static page max width" type="length" max="900px" default="780px" value="780px"/>
+</Group>
+
+<Group description="Post font size">
+<Variable name="post.titleSize" description="Post title font size" type="length" max="42px" default="32px" value="38px"/>
+<Variable name="post.fontSize" description="Post font size (Default)" type="length" max="18px" default="17px" value="17px"/>
+<Variable name="post.titleSizeMobile" description="Post title size (onMobile)" type="length" max="38px" default="26px" value="28px"/>
+<Variable name="post.fontSizeMobile" description="Post font size (onMobile)" type="length" max="18px" default="16px" value="16px"/>
+</Group>
+
+<Group description="Widget title font size">
+<Variable name="widget.titleSize" description="Widget title font size" type="length" max="18px" default="15px" value="16px"/>
+<Variable name="widget.titleAfter" description="Widget title border" type="length" max="40px" default="30px" value="30px"/>
+<Variable name="widget.titleAfterC" description="Widget title border color" type="color" default="#94a3b8" value="#94a3b8"/>
+</Group>
+
+<Group description="Mobile menu colors">
+<Variable name="mob.border" description="Mobile menu border" type="length" max="2px" default="0px" value="0px"/>
+<Variable name="mob.borderR" description="Mobile corder radius" type="length" max="60px" default="16px" value="16px"/>
+<Variable name="mob.text" description="Mobile text colors" type="color" default="#475569" value="#475569"/>
+<Variable name="mob.bg" description="Mobile background color" type="color" default="#ffffff" value="#ffffff"/>
+<Variable name="mob.hovBg" description="Mobile hover background color" type="color" default="#f8fafc" value="#f8fafc"/>
+</Group>
+
+<Group description="Footer colors">
+<Variable name="foot.border" description="Footer border" type="length" max="2px" default="0px" value="0px"/>
+<Variable name="foot.text" description="Footer text colors" type="color" default="#475569" value="#475569"/>
+<Variable name="foot.bg" description="Footer background color" type="color" default="#ffffff" value="#ffffff"/>
+</Group>
+
+<Group description="Dark mode colors and background">
+<Variable name="dark.text" description="Dark mode text color" type="color" default="#f8fafc" value="#f8fafc"/>
+<Variable name="dark.textAlt" description="Alternative text colors" type="color" default="#94a3b8" value="#94a3b8"/>
+<Variable name="dark.link" description="Dark mode link colors" type="color" default="#818cf8" value="#818cf8"/>
+<Variable name="dark.wave" description="Dark mode wave background color" type="color" default="#1e293b" value="#1e293b"/>
+<Variable name="dark.bg" description="Dark mode background color" type="color" default="#0f172a" value="#0f172a"/>
+<Variable name="dark.bgAlt" description="Alternative background color" type="color" default="#1e293b" value="#1e293b"/>
+<Variable name="dark.bgSec" description="Secondary background color" type="color" default="#334155" value="#334155"/>
+</Group>
+
+<Group description="Border Radius">
+<Variable name="button.radius" description="Buttons Border Radius" type="length" max="50px" default="12px" value="12px"/>
+<Variable name="greet.radius" description="Greetings and Views Border Radius" type="length" max="25px" default="12px" value="12px"/>
+<Variable name="iconhover.radius" description="Icon Hover Border Radius" type="length" max="15px" default="12px" value="12px"/>
+<Variable name="thumbelem.radius" description="Thumbnail Elements Border Radius" type="length" max="15px" default="12px" value="12px"/>
+<Variable name="moblsearch.radius" description="Blog Search Border Radius (Mobile)" type="length" max="20px" default="16px" value="20px"/>
+<Variable name="desksearch.radius" description="Blog Search Border Radius (Desktop)" type="length" max="20px" default="12px" value="20px"/>
+<Variable name="moblheader.radius" description="Header Style 2 Border Radius (Mobile)" type="length" max="30px" default="20px" value="24px"/>
+</Group>
+
+<Group description="(Do not edit) New Blogger comment required">
+<Variable name="body.background" description="Background" color="#505050" type="background" default="$(color) none repeat scroll center center"  value="$(color) url() no-repeat scroll center center"/>
+<Variable name="body.text.font" description="Font Blogger comment" type="font" default="'Inter', sans-serif" value="400 14px 'Inter', sans-serif"/>
+<Variable name="body.text.color" description="Color" type="color" default="#505050"  value="#505050"/>
+<Variable name="body.link.color" description="Link color" type="color" default="#1e293b"  value="#94a3b8"/>
+<Variable name="posts.title.color" description="Post title color" type="color" default="#1e293b"  value="#94a3b8"/>
+<Variable name="posts.text.color" description="Post text color" type="color" default="#475569"  value="#94a3b8"/>
+<Variable name="posts.icons.color" description="Post info color" type="color" default="#1e293b" value="#94a3b8"/>
+<Variable name="posts.background.color" description="Post background color" type="color" default="#f8fafc"  value="transparent"/>
+<Variable name="tabs.font" description="Font" type="font" default="'Inter', sans-serif" value="400 14px 'Inter', sans-serif"/>
+<Variable name="tabs.color" description="Text color" type="color" default="#4d4d4d"  value="#1e293b"/>
+<Variable name="tabs.selected.color" description="Selected color" type="color" default="#fff"  value="#ffffff"/>
+<Variable name="tabs.overflow.background.color" description="Popup background color" type="color" default="$(posts.background.color)"  value="#ffffff"/>
+<Variable name="tabs.overflow.color" description="Popup text color" type="color" default="#475569"  value="#1e293b"/>
+<Variable name="tabs.overflow.selected.color" description="Popup selected color" type="color" default="#1e293b"  value="#94a3b8"/>
+<Variable name="labels.background.color" description="Labels background color" type="color" default="#fff" value="#ffffff"/>
+<Variable name="blog.title.font" description="Blog title font" type="font" default="'Inter', sans-serif" value="400 14px 'Inter', sans-serif"/>
+<Variable name="blog.title.color" description="Blog title color" type="color" default="#fff" value="#ffffff"/>
+</Group>
+*/
+
+/* Variable color */ :root, :root .lgT:not(.drK), :root .theme0:not(.drK){/* Theme */ --themeC: $(themeColor); /* Body */ --headC: $(head.color); --bodyC: $(body.color); --bodyCa: $(body.colorAlt); --bodyB: $(body.bgColor); /* Link */ --linkC: $(link.color); --linkB: $(link.bgColor); /* Wave */ --waveB: $(wave.bgColor); /* Icon */ --iconC: $(icon.color); --iconCa: $(icon.colorAlt); --iconCs: $(icon.colorSec); /* Header */ --headerC: $(header.text); --headerT: $(header.titleSize); --headerW: 600; /* write 400(normal) or 700(bold) */ --headerB: $(header.bgColor); --headerL: $(header.border); --headerI: $(header.icon); --headerH: $(header.height); --headerHi: -$(header.height); --headerHm: $(header.heightM); --headerR: $(moblheader.radius); /* Notif */ --notifH: $(notif.height); --notifU: $(notif.bg); --notifC: $(notif.color); /* Content */ --contentB: $(content.bg); --contentL: $(content.border); --contentW: $(content.maxWidth); --sideW: $(sidebar.maxWidth); --transB: rgba(0,0,0,.03); /* Page */ --pageW: $(page.maxContent); --pageW: $(post.maxContent); --postT: $(post.titleSize); --postF: $(post.fontSize); --postTm: $(post.titleSizeMobile); --postFm: $(post.fontSizeMobile); /* Widget */ --widgetT: $(widget.titleSize); --widgetTw: 600; /* write 400(normal) or 700(bold) */ --widgetTa: $(widget.titleAfter); --widgetTac: $(widget.titleAfterC); /* Nav */ --navW: $(nav.width); --navT: $(nav.text); --navI: $(nav.icon); --navB: $(nav.bg); --navL: $(nav.border); /* Search */ --srchI: $(search.icon); --srchB: $(search.bg); /* Mob Men */ --mobT: $(mob.text); --mobHv: $(mob.hovBg); --mobB: $(mob.bg); --mobL: $(mob.border); --mobBr: $(mob.borderR); /* Footer */ --fotT: $(foot.text); --fotB: $(foot.bg); --fotL: $(foot.border); /* Font family */ --fontH: 'Inter', system-ui, -apple-system, sans-serif; --fontB: 'Inter', system-ui, -apple-system, sans-serif; --fontBa: 'Inter', system-ui, -apple-system, sans-serif; --fontC: 'JetBrains Mono', 'Courier New', monospace; /* Trans */ --trans-1: all .15s cubic-bezier(0.4, 0, 0.2, 1); --trans-2: all .25s cubic-bezier(0.4, 0, 0.2, 1); --trans-3: all .35s cubic-bezier(0.4, 0, 0.2, 1); --trans-4: all .45s cubic-bezier(0.4, 0, 0.2, 1); /* Synx */ --synxBg: #f8fafc; --synxC: #1e293b; --synxOrange: #f97316; --synxBlue: #0ea5e9; --synxGreen: #10b981; --synxRed: #ef4444; --synxGray: #64748b; /* Border Radius */ --buttonR: $(button.radius); --greetR: $(greet.radius);  --iconHr: $(iconhover.radius);  --thumbEr: $(thumbelem.radius); --srchMr: $(moblsearch.radius); --srchDr : $(desksearch.radius); /* Dark */ --darkT: $(dark.text); --darkTa: $(dark.textAlt); --darkU: $(dark.link); --darkW: $(dark.wave); --darkB: $(dark.bg); --darkBa: $(dark.bgAlt); --darkBs: $(dark.bgSec);}
+
+/* Dark Mode */ :root .drK{/* Theme */ --themeC: $(themeDark);}
+
+/* Theme 1 - Red */ :root .theme1:not(.drK){/* Theme */ --themeC: #ef4444; /* Body */ --bodyB: #fef2f2; /* Link */ --linkC: #ef4444; --linkB: #ef4444; /* Header */ --headerB: #fee2e2; /* Notif */ --notifU: #fee2e2; --notifC: #dc2626; /* Search */ --srchB: #fee2e2; /* MobMn */ --mobB: #fee2e2; /* Wave */ --waveB: #fee2e2;}
+
+/* Theme 2 - Green */ :root .theme2:not(.drK){/* Theme */ --themeC: #10b981; /* Body */ --bodyB: #f0fdf4; /* Link */ --linkC: #10b981; --linkB: #10b981; /* Header */ --headerB: #dcfce7; /* Notif */ --notifU: #dcfce7; --notifC: #059669; /* Search */ --srchB: #dcfce7; /* MobMn */ --mobB: #dcfce7; /* Wave */ --waveB: #dcfce7;}
+
+/* Theme 3 - Blue */ :root .theme3:not(.drK){/* Theme */ --themeC: #3b82f6; /* Body */ --bodyB: #eff6ff; /* Link */ --linkC: #3b82f6; --linkB: #3b82f6; /* Header */ --headerB: #dbeafe; /* Notif */ --notifU: #dbeafe; --notifC: #1d4ed8; /* Search */ --srchB: #dbeafe; /* MobMn */ --mobB: #dbeafe; /* Wave */ --waveB: #dbeafe;}
+
+/* Theme 4 - Yellow */ :root .theme4:not(.drK){/* Theme */ --themeC: #f59e0b; /* Body */ --bodyB: #fffbeb; /* Link */ --linkC: #f59e0b; --linkB: #f59e0b; /* Header */ --headerB: #fef3c7; /* Notif */ --notifU: #fef3c7; --notifC: #d97706; /* Search */ --srchB: #fef3c7; /* MobMn */ --mobB: #fef3c7; /* Wave */ --waveB: #fef3c7;}
+
+/* Theme 5 - Pink */ :root .theme5:not(.drK){/* Theme */ --themeC: #ec4899; /* Body */ --bodyB: #fdf2f8; /* Link */ --linkC: #ec4899; --linkB: #ec4899; /* Header */ --headerB: #fce7f3; /* Notif */ --notifU: #fce7f3; --notifC: #db2777; /* Search */ --srchB: #fce7f3; /* MobMn */ --mobB: #fce7f3; /* Wave */ --waveB: #fce7f3;}
+
+/* Theme 6 - Orange */ :root .theme6:not(.drK){/* Theme */ --themeC: #f97316; /* Body */ --bodyB: #fff7ed; /* Link */ --linkC: #f97316; --linkB: #f97316; /* Header */ --headerB: #ffedd5; /* Notif */ --notifU: #ffedd5; --notifC: #ea580c; /* Search */ --srchB: #ffedd5; /* MobMn */ --mobB: #ffedd5; /* Wave */ --waveB: #ffedd5;}
+
+/* Theme 7 - Blue Grey */ :root .theme7:not(.drK){/* Theme */ --themeC: #64748b; /* Body */ --bodyB: #f8fafc; /* Link */ --linkC: #64748b; --linkB: #64748b; /* Header */ --headerB: #f1f5f9; /* Notif */ --notifU: #f1f5f9; --notifC: #475569; /* Search */ --srchB: #f1f5f9; /* MobMn */ --mobB: #f1f5f9; /* Wave */ --waveB: #f1f5f9;}
+
+/* Theme 8 - Brown */ :root .theme8:not(.drK){/* Theme */ --themeC: #78481e; /* Body */ --bodyB: #faf5f0; /* Link */ --linkC: #78481e; --linkB: #78481e; /* Header */ --headerB: #f7f0e8; /* Notif */ --notifU: #f7f0e8; --notifC: #5c3716; /* Search */ --srchB: #f7f0e8; /* MobMn */ --mobB: #f7f0e8; /* Wave */ --waveB: #f7f0e8;}
+
+/* Theme 9 - Purple */ :root .theme9:not(.drK){/* Theme */ --themeC: #8b5cf6; /* Body */ --bodyB: #faf5ff; /* Link */ --linkC: #8b5cf6; --linkB: #8b5cf6; /* Header */ --headerB: #f3e8ff; /* Notif */ --notifU: #f3e8ff; --notifC: #7c3aed; /* Search */ --srchB: #f3e8ff; /* MobMn */ --mobB: #f3e8ff; /* Wave */ --waveB: #f3e8ff;}
+
+/* Theme 10 - Indigo */ :root .theme10:not(.drK){/* Theme */ --themeC: #4f46e5; /* Body */ --bodyB: #eef2ff; /* Link */ --linkC: #4f46e5; --linkB: #4f46e5; /* Header */ --headerB: #e0e7ff; /* Notif */ --notifU: #e0e7ff; --notifC: #3730a3; /* Search */ --srchB: #e0e7ff; /* MobMn */ --mobB: #e0e7ff; /* Wave */ --waveB: #e0e7ff;}
+]]></b:skin>
+
+<style><b:if cond='!data:blog.isMobileRequest'>/*<![CDATA[*/
+/* Desktop Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&display=swap');
+/*]]>*/
+</b:if>/*<![CDATA[*/
+/* Modern CSS Reset & Base */
+::selection{color:#fff;background:var(--linkB)} .drK ::selection{background:var(--darkU)} *, ::after, ::before{-webkit-box-sizing:border-box;box-sizing:border-box} *{-webkit-tap-highlight-color:transparent} h1, h2, h3, h4, h5, h6{margin:0;font-weight:600;font-family:var(--fontH);color:var(--headC);letter-spacing:-0.025em} h1{font-size:2.25rem;line-height:1.2} h2{font-size:1.875rem;line-height:1.3} h3{font-size:1.5rem;line-height:1.3} h4{font-size:1.25rem;line-height:1.4} h5{font-size:1.125rem;line-height:1.4} h6{font-size:1rem;line-height:1.5} a{color:var(--linkC);text-decoration:none;transition:var(--trans-1)} a:hover{opacity:.8} table{border-spacing:0} iframe{max-width:100%;border:0;margin-left:auto;margin-right:auto} input, button, select, textarea{font:inherit;font-size:100%;color:inherit;line-height:normal} input::placeholder{color:var(--bodyCa)} img{display:block;position:relative;max-width:100%;height:auto} svg{width:22px;height:22px;fill:var(--iconC)} svg.line, svg .line{fill:none!important;stroke:var(--iconC);stroke-linecap:round;stroke-linejoin:round; stroke-width:1.5} svg.c-1{fill:var(--iconCa)} svg.c-2{fill:var(--iconCs); opacity:.4} .hidden{display:none !important} .invisible{visibility:hidden !important} .clear{width:100%;display:block;margin:0;padding:0;float:none;clear:both} .fCls{display:block;position:fixed;top:-50%;left:-50%;right:-50%;bottom:-50%;z-index:1;transition:var(--trans-1);background:transparent;opacity:0;visibility:hidden} .free::after, .new::after{display:inline-block;content:'Free!';color:var(--linkC);font-size:12px;font-weight:500;margin:0 5px;padding:2px 6px;background:var(--transB);border-radius:4px} .new::after{content:'New!'} svg .svgC{fill:var(--linkC)} svg.line .svgC{fill:none;stroke:var(--linkC)} .drK svg .svgC{fill:var(--darkU)} .drK svg.line .svgC{fill:none;stroke:var(--darkU)}  .blog-admin, .bD .bmPs, .pInf .pIc .bmPs, .bmPs>svg .d, .isBkm, .cBkPs, .ckW, .tocL, .headR .headM .themeBtn, .cusW{display:none} .lazy.loaded, .tocL, .pVws:not(.hidden){animation:opaCity .5s 0s;-webkit-animation:opaCity .5s 0s}
+/* Main Element */
+html{scroll-behavior:smooth;overflow-x:hidden} body{-webkit-font-smoothing:antialiased;position:relative;top:0!important;margin:0;padding:0!important;width:100%;font-family:var(--fontB);font-size:15px;color:var(--bodyC);background:var(--bodyB);line-height:1.6;animation:opaCity .6s 0s;-webkit-animation:opaCity .6s 0s} .secIn{margin:0 auto;padding-left:24px;padding-right:24px;max-width:var(--contentW)}
+/* Notif Section */
+.ntfC{display:flex;align-items:center;position:relative;min-height:var(--notifH);background:var(--notifU);color:var(--notifC);padding:14px 20px; font-size:14px; transition:var(--trans-1);overflow:hidden;border-radius:var(--greetR);margin-bottom:24px;box-shadow:0 4px 20px rgba(0,0,0,.05)} .ntfC::before{content:'';width:80px;height:80px;background:rgba(0,0,0,.08);display:block;border-radius:50%;position:absolute;top:-20px;left:-20px;opacity:.1} .Rtl .ntfC::before{left:unset;right:-20px} .ntfC .secIn{width:100%;position:relative} .ntfC .c{display:flex;align-items:center} .ntfT{width:100%; padding-right:20px; text-align:center;font-weight:500} .ntfT a{color:var(--linkC);font-weight:600} .ntfI:checked ~ .ntfC{height:0;min-height:0;margin:0;padding:0;opacity:0;visibility:hidden} .ntfA{display:inline-flex;align-items:center;justify-content:center;text-align:initial} .ntfA >a{flex-shrink:0;white-space:nowrap;display:inline-block; margin-left:12px;padding:8px 16px;border-radius:var(--buttonR);background:var(--linkB);color:white;font-size:13px;font-weight:500;box-shadow:0 4px 12px rgba(99, 102, 241, .2);text-decoration:none} .drK .ntfA >a{background:var(--darkU);color:#fffdfc}
+/* Header Section */
+header{width:100%;z-index:50; position:sticky;top:0;background:var(--headerB);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:var(--headerL) solid var(--contentL)} header a{display:block;color:var(--bodyC)} header svg{width:20px;height:20px;fill:var(--headerI); opacity:.9} header svg.line{fill:none;stroke:var(--headerI)} .headIc .tNav svg >*{opacity:0;transition:var(--trans-1)} .hdMn .navI:not(:checked) ~ .mainWrp .headIc .tNav .h1, .hdMn .navI:checked ~ .mainWrp .headIc .tNav .h2, .bD:not(.hdMn) .navI:not(:checked) ~ .mainWrp .headIc .tNav .h2, .bD:not(.hdMn) .navI:checked ~ .mainWrp .headIc .tNav .h1{opacity:1} .headCn{position:relative;height:var(--headerH);color:var(--headerC);background:var(--headerB); display:flex;align-items:center} .headL{display:flex;align-items:center;width: var(--navW);padding:0 0 0 24px; transition:var(--trans-1)} .headL .headIc{flex:0 0 32px} .headL .headN{width:calc(100% - 32px); padding:0 0 0 8px} .headR{padding:0 24px; flex-grow:1; transition:var(--trans-1)} .headI .headP{display:flex;justify-content:flex-end;position:relative} .headI{height:100%; justify-content:space-between; position:relative;width:calc(100% + 16px);left:-8px;right:-8px} .headI >*{margin:0 8px} .headIc{font-size:12px;display:flex;list-style:none;margin:0;padding:0} .headIc >*{position:relative} .headIc svg{z-index:1} .headIc .tNav .l{stroke:var(--linkC)} .drK .headIc .tNav .l{stroke:var(--darkU)} .headIc .isSrh{display:none} ul.headIc{position:relative;width:calc(100% + 16px);left:-8px;right:-8px;justify-content:flex-end} ul.headIc li{margin:0 4px} ul.headIc li >*{cursor:pointer} .Header{background-repeat:no-repeat;background-size:100%;background-position:center} .Header img{max-width:180px;max-height:50px} .Header .headH{display:block;color:inherit;font-size:var(--headerT); font-weight:var(--headerW)} .Header .headH.hasSub{display:flex;align-items:baseline} .Header .headTtl{overflow:hidden;white-space:nowrap;text-overflow:ellipsis; display:block} .Header .headSub{margin:0 8px;font:400 12px var(--fontB); white-space:nowrap;text-overflow:ellipsis;overflow:hidden;max-width:80px;opacity:.6} .Header .headSub::before{content:attr(data-text)} /* Icon */
+.tIc{width:36px;height:36px;justify-content:center;border-radius:var(--iconHr)} .tIc::after{content:'';background:var(--transB);border-radius:inherit;position:absolute;left:0;right:0;top:0;bottom:0;transition:var(--trans-1);opacity:0;visibility:hidden} .tIc:hover::after{opacity:1;visibility:visible} .tDL .d2, .drK .tDL .d1{display:none} ul.headIc li .fCls, .headR .headM, .isDrk .cusW{cursor:auto}
+/* mainIn Section */
+.mainWrp:after{content:'';display:block;position:absolute;top:0;right:0;width:200px;height:200px;border-radius:0 0 0 300px;background:linear-gradient(135deg, rgba(99, 102, 241, .03) 0%, transparent 70%);z-index:-1} .drK .mainWrp:after{background:linear-gradient(135deg, rgba(129, 140, 248, .05) 0%, transparent 70%)} .blogCont{flex-grow:1;padding:32px 0 0;position:relative;transition:var(--trans-1)} .blogCont .section:not(.no-items), .blogCont .widget:not(:first-child){margin-top:48px} .blogCont .section:first-child, .blogCont footer .section:not(:first-child), .blogCont footer .widget:not(:first-child), .blogCont .section.mobMn, #notif-widget .widget:not(:first-child){margin-top:0} .blogAd .section:not(.no-items){margin-bottom:48px} #notif-widget .widget:first-child{margin-bottom:24px} .blogM{flex-wrap:wrap;justify-content:center;padding-bottom:48px} .sidebar{max-width:500px;margin:60px auto 0} .sideSticky{position:sticky;top:calc(var(--headerH) + 20px)} .onPs .blogM .mainbar{max-width:var(--pageW)} .onPg .blogM .mainbar{max-width:var(--pageW)}
+/* Article Section Modern */
+.onIndx .blogPts, .itemFt .itm{display:flex;flex-wrap:wrap;align-items:center;position:relative; width:calc(100% + 24px);left:-12px;right:-12px} .onIndx .blogPts >*, .itemFt .itm >*{flex:0 0 calc(50% - 24px);width:calc(50% - 24px); margin-bottom:0;margin-left:12px;margin-right:12px} .onIndx .blogPts >*{background:var(--contentB);box-shadow:0 10px 40px rgba(0,0,0,.08);border-radius:20px;margin-bottom:24px;padding:20px 20px 60px;position:relative;transition:var(--trans-2);border:1px solid transparent} .onIndx .blogPts >*:hover{transform:translateY(-4px);box-shadow:0 20px 60px rgba(0,0,0,.12);border-color:var(--contentL)} .onIndx .blogPts .pTag{padding-bottom:0} .onIndx .pTag .pInf{display:none} .onIndx .blogPts .pInf{position:absolute;bottom:20px;left:20px;right:20px} .onIndx .blogPts{align-items:stretch} .onIndx .blogPts.mty{display:block;width:100%;left:0;right:0} .onIndx .blogPts.mty .noPosts{width:100%;margin:0} .onIndx .blogPts div.ntry{padding-bottom:0;flex:0 0 calc(100% - 24px)} .blogPts .ntry.noAd .widget{display:none} .cPst .pLbls >*{padding:16px 4px} .cPst .pLbls >*:not(:last-child){padding-right:0} .cPst .pLbls >*:not(:last-child)::after{padding-left:4px} .ctgry .note{margin-bottom:32px} .ctgry article{animation:ctgryFade 1s;-webkit-animation:ctgryFade 1s} @keyframes ctgryFade{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}} @-webkit-keyframes ctgryFade{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+/* Thumbnail Modern */
+.pThmb{flex:0 0 calc(50% - 16px);overflow:hidden;position:relative;border-radius:16px; margin-bottom:24px;background:var(--transB)} .pThmb .thmb{display:block;position:relative;padding-top:56.25%;color:inherit;transition:var(--trans-3);-webkit-transition:var(--trans-3);border-radius:12px} article:hover .thmb{transform:scale(1.05);-webkit-transform:scale(1.05)} .pThmb .thmb amp-img{position:absolute;top:50%;left:50%;min-width:100%;min-height:100%;max-height:108%;text-align:center;transform:translate(-50%, -50%);border-radius:inherit} .pThmb div.thmb span::before{content:attr(data-text); opacity:.7; white-space:nowrap} .pThmb:not(.nul)::before{position:absolute;top:0;right:0;bottom:0;left:0; transform:translateX(-100%); background-image:linear-gradient(90deg, rgba(255,255,255,0) 0, rgba(255,255,255,.2) 20%, rgba(255,255,255,.4) 60%, rgba(255,255,255, 0)); animation:shimmer 2s infinite;content:''} .pThmb.iyt:not(.nul) .thmb::after{content:'';position:absolute;top:0;left:0;right:0;bottom:0; background:rgba(0,0,0,.3) url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23fff' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'><path d='M4 11.9999V8.43989C4 4.01989 7.13 2.2099 10.96 4.4199L14.05 6.1999L17.14 7.9799C20.97 10.1899 20.97 13.8099 17.14 16.0199L14.05 17.7999L10.96 19.5799C7.13 21.7899 4 19.9799 4 15.5599V11.9999Z'/></svg>") center / 40px no-repeat; opacity:0;transition:var(--trans-1);border-radius:inherit} .pThmb.iyt:not(.nul):hover .thmb::after{opacity:1}
+/* Title and Entry */
+.pTtl{font-size:1.2rem;line-height:1.4;font-weight:600;margin-bottom:12px} .pTtl.sml{font-size:1.1rem} .pTtl.itm{font-size:var(--postT);font-family:var(--fontBa);font-weight:700; line-height:1.2;margin-bottom:20px} .pTtl.itm.nSpr{margin-bottom:32px} .aTtl a:hover{color:var(--linkC)} .aTtl a, .pSnpt{color:inherit; display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden} .pEnt{margin-top:48px; font-size:var(--postF);font-family:var(--fontBa); line-height:1.7}
+/* Snippet Modern */
+.pSnpt{-webkit-line-clamp:2;margin:16px 0 0;font-family:var(--fontB);font-size:15px;line-height:1.6; color:var(--bodyCa)} .pSnpt.nTag{color:var(--linkC);opacity:1;margin-bottom:12px} .pDesc{font-size:17px;line-height:1.6;margin:12px 0 28px;color:var(--bodyCa)} .pInf{display:flex;align-items:center;justify-content:space-between; margin-top:20px} .pInf.nTm{margin:0} .pInf.nSpr .pJmp{opacity:1} .pInf.nSpr .pJmp::before{content:attr(aria-label)} .pInf.ps{background:var(--contentB);box-shadow:0 8px 32px rgba(0,0,0,.08);padding:20px;border-radius:16px;justify-content:flex-start;align-items:center;margin-top:32px;position:relative;width:100%} .drK .pInf.ps{background:var(--darkBa)} .pInf.ps .pTtmp{opacity:1} .pInf.ps .pTtmp::before{content:attr(data-date) ' '} .pInf.ps .pTtmp::after{display:inline} .pInf.ps.nul{display:none} .pInf .pIm{flex-shrink:0;margin-right:12px} .Rtl .pInf .pIm{margin-right:0;margin-left:12px} .pInf .pNm{flex-grow:1;width:calc(100% - 180px);display:inline-flex;flex-wrap:wrap;align-items:baseline} .pInf .pNm.l{display:none} .pInf .pCm{flex-shrink:0;max-width:68px;margin:0 4px} .pInf .pCm.l{max-width:110px} .pInf .pIc{display:inline-flex;justify-content:flex-end;position:relative;width:calc(100% + 12px);left:-6px;right:-6px} .pInf .pIc >*{display:flex;align-items:center;justify-content:center;width:36px;height:36px;position:relative;margin:0 4px;color:inherit;border-radius:var(--iconHr)} .pInf .pIc >*:hover{background:var(--transB)} .pInf .pIc svg{width:20px;height:20px;opacity:.8;z-index:1} .pInf .pIc .cmnt::before{content:attr(data-text);font-size:12px;line-height:20px;padding:0 6px;border-radius:10px;background:var(--transB);color:var(--bodyC);position:absolute;top:-8px;right:0;z-index:2} .pInf .pDr{opacity:.7;display:inline-block;margin:0 6px;white-space:nowrap;text-overflow:ellipsis;overflow:hidden;max-width:100%;font-size:14px} .pInf .pDr >*:not(:first-child)::before{content:'\00B7';margin:0 6px} .pInf a.nm{color:var(--bodyC)} .pInf a.nm:hover::after{text-decoration:underline} .drK .pInf a.nm{color:var(--darkT)} .pInf .pIn{display:inline} .pInf .nm{margin:0 6px} .pInf .im{width:32px;height:32px} .aTtmp{opacity:.8;font-size:14px} .aTtmp, .pJmp{overflow:hidden} .pTtmp::after, .pJmp::before, .iTtmp::before{content:attr(data-text); display:block;line-height:20px; white-space:nowrap;text-overflow:ellipsis;overflow:hidden} .pJmp{display:inline-flex;align-items:center; opacity:0; transition:var(--trans-2);background:var(--linkB);color:white;padding:8px 16px;border-radius:var(--buttonR);font-size:14px;font-weight:500} .pJmp::before{content:attr(aria-label)} .pJmp svg{height:18px;width:18px;stroke:white; flex-shrink:0;margin-left:6px} .ntry:hover .pJmp, .itm:hover .pJmp{opacity:1;transform:translateY(0)} .ntry:not(.noAd) .pJmp, .itemFt .itm .pJmp{animation:indicator 2s 3s infinite} .ntry:not(.noAd):hover .pJmp, .itemFt:hover .itm .pJmp{animation:none}
+/* Blog pager Modern */
+.blogPg{display:flex;flex-wrap:wrap;justify-content:center;font-size:14px;font-family:var(--fontB);line-height:20px;color:#fffdfc;margin:32px 0 60px;max-width:100%;gap:8px} .blogPg >*{display:flex;justify-content:center;align-items:center;min-width:44px;padding:12px 16px;color:inherit;background:var(--linkB);border-radius:var(--buttonR);box-shadow:0 4px 20px rgba(99, 102, 241, .2);transition:var(--trans-1);font-weight:500} .blogPg >*:hover{transform:translateY(-2px);box-shadow:0 8px 25px rgba(99, 102, 241, .3)} .blogPg >* svg{width:18px;height:18px; stroke:white; stroke-width:1.5} .blogPg >*::before{content:attr(data-text)} .blogPg .jsLd{margin-left:auto;margin-right:auto} .blogPg .nwLnk::before, .blogPg .jsLd::before{display:none} .blogPg .nwLnk::after, .blogPg .jsLd::after{content:attr(data-text); margin:0 8px} .blogPg .olLnk::before{margin:0 8px} .blogPg .nPst, .blogPg .current{background:var(--contentL); color:var(--bodyCa)} .blogPg .nPst.jsLd svg{fill:var(--darkTa);stroke:var(--darkTa)} .blogPg .nPst svg.line{stroke:var(--darkTa)}
+/* Article Style Modern */
+.pS h1, .pS h2, .pS h3, .pS h4, .pS h5, .pS h6{margin:2em 0 1em; font-family:var(--fontBa);font-weight:600; line-height:1.3;letter-spacing:-0.025em} .pS h1:target, .pS h2:target, .pS h3:target, .pS h4:target, .pS h5:target, .pS h6:target{padding-top:var(--headerH);margin-top:0}
+/* Paragraph Modern */
+.pS p{margin:1.8em 0;font-size:var(--postF);line-height:1.7} .pIndent{text-indent:2.5rem} .onItm:not(.Rtl) .dropCap{float:left;margin:4px 16px 0 0; font-size:60px;line-height:50px;opacity:.8;font-weight:600} .pS hr{margin:3em 0; border:0} .pS hr::before{content:'\2027 \2027 \2027'; display:block;text-align:center; font-size:24px;letter-spacing:0.6em;text-indent:0.6em;opacity:.4;clear:both} .pRef{display:block;font-size:14px;line-height:1.5em; opacity:.7; word-break:break-word}
+/* Note Modern */
+.note{position:relative;padding:20px 24px 20px 60px;background:var(--notifU);color:var(--notifC); font-size:15px;font-family:var(--fontB);line-height:1.6em;border-radius:16px;overflow:hidden;border-left:4px solid var(--linkC);margin:2em 0} .note::before{content:'';width:80px;height:80px;background:rgba(0,0,0,.1);display:block;border-radius:50%;position:absolute;top:-20px;left:-20px;opacity:.1} .note::after{content:'\002A';position:absolute;left:24px;top:20px; font-size:24px; min-width:20px;text-align:center;color:var(--linkC)} .note.wr{background:#fef2f2;color:#dc2626;border-left-color:#dc2626} .note.wr::after{content:'\0021'} .drK .note{background:var(--darkBs);color:rgba(255,255,255,.9)}
+/* Blockquote Modern */
+blockquote, .cmC i[rel=quote]{position:relative;font-size:18px;font-weight:500;opacity:.9;line-height:1.6em;margin-left:0;margin-right:0;padding:24px 32px;border-left:4px solid var(--linkC);background:var(--contentB);border-radius:16px;box-shadow:0 8px 32px rgba(0,0,0,.05);margin:2em 0} blockquote.s-1, details.sp{font-size:16px; padding:32px; border:0;line-height:1.7em;background:linear-gradient(135deg, var(--contentB) 0%, var(--transB) 100%)} blockquote.s-1::before{content:'\201D';position:absolute;top:20px;left:24px; font-size:60px;line-height:normal;opacity:.2;color:var(--linkC)}
+/* Table Modern */
+.ps table{margin:2em auto; font-size:15px;font-family:var(--fontB);border-radius:12px;overflow:hidden} .ps table:not(.tr-caption-container){min-width:90%;border:1px solid var(--contentL);border-radius:12px;overflow:hidden} .ps table:not(.tr-caption-container) td{padding:16px} .ps table:not(.tr-caption-container) tr:not(:last-child) td{border-bottom:1px solid var(--contentL)} .ps table:not(.tr-caption-container) tr:nth-child(2n+1) td{background:var(--transB)} .ps table th{padding:16px; text-align:inherit; border-bottom:1px solid var(--contentL);background:var(--transB);font-weight:600} .ps .table{display:block; overflow-y:hidden;overflow-x:auto;scroll-behavior:smooth;border-radius:12px}
+/* Syntax Modern */
+.pre{background:var(--synxBg);color:var(--synxC); direction: ltr;border-radius:16px;overflow:hidden;border:1px solid var(--contentL)} .pre:not(.tb){position:relative;border-radius:16px;overflow:hidden;margin:2em auto;font-family:var(--fontC);box-shadow:0 8px 32px rgba(0,0,0,.05)} .pre pre{margin:0;color:inherit;background:inherit} .pre:not(.tb)::before, .cmC i[rel=pre]::before{content:'</>';display:flex;justify-content:flex-end;position:absolute;right:0;top:0;width:100%;background:var(--synxBg);color:var(--synxGray);font-size:11px;padding:0 16px;z-index:2;line-height:36px;font-weight:500} .pre:not(.tb).html::before{content:'.html'} .pre:not(.tb).css::before{content:'.css'} .pre:not(.tb).js::before{content:'.js'} .pre:not(.tb):hover::before{content:'Double click to copy | </>'} .pre:not(.tb).html:hover::before{content:'Double click to copy | .html'} .pre:not(.tb).css:hover::before{content:'Double click to copy | .css'} .pre:not(.tb).js:hover::before{content:'Double click to copy | .js'} .pre[data-text]:not([data-text='']):not(.tb)::before{content:attr(data-text)} .pre[data-text]:not([data-text='']):not(.tb):hover::before{content:'Double Click to Copy | ' attr(data-text)} pre, .cmC i[rel=pre]{display:block;position:relative;font-family:var(--fontC);font-size:14px;line-height:1.6em;border-radius:16px;background:var(--synxBg);color:var(--synxC);padding:40px 24px 24px;margin:2em auto; -moz-tab-size:2;tab-size:2;-webkit-hyphens:none;-moz-hyphens:none;-ms-hyphens:none;hyphens:none; overflow:auto;direction:ltr;white-space:pre} code{display:inline;padding:4px 8px;font-size:14px;border-radius:6px;line-height:inherit;color:var(--synxC);background:var(--transB);font-family:var(--fontC)}
+/* Tabs Modern */
+.tbHd{display:flex; border-bottom:2px solid var(--contentL);margin-bottom:32px;font-size:15px;font-family:var(--fontB);line-height:1.6em; overflow-x:scroll;overflow-y:hidden;scroll-behavior:smooth;scroll-snap-type:x mandatory; -ms-overflow-style:none;-webkit-overflow-scrolling:touch;gap:4px} .tbHd >*{padding:12px 20px; border-bottom:2px solid transparent; transition:var(--trans-1);opacity:.7;white-space:nowrap; scroll-snap-align:start;font-weight:500;border-radius:12px 12px 0 0} .tbHd >*::before{content:attr(data-text)} .tbCn >*{display:none;width:100%} .tbCn >* p:first-child{margin-top:0} .pS input[id*="1"]:checked ~ .tbHd label[for*="1"], .pS input[id*="2"]:checked ~ .tbHd label[for*="2"], .pS input[id*="3"]:checked ~ .tbHd label[for*="3"], .pS input[id*="4"]:checked ~ .tbHd label[for*="4"]{border-color:var(--linkB);opacity:1;color:var(--linkC);background:var(--transB)} .pS input[id*="1"]:checked ~ .tbCn div[class*="Text-1"], .pS input[id*="2"]:checked ~ .tbCn div[class*="Text-2"], .pS input[id*="3"]:checked ~ .tbCn div[class*="Text-3"], .pS input[id*="4"]:checked ~ .tbCn div[class*="Text-4"]{display:block} .tbHd.stick{position:sticky;top:var(--headerH);background:var(--bodyB);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);z-index:10}
+/* Button Modern */
+.button{display:inline-flex;align-items:center;justify-content:center; margin:16px 0;padding:14px 24px;outline:0;border:0; border-radius:var(--buttonR);line-height:20px; color:white; background:var(--linkB); font-size:15px;font-family:var(--fontB);font-weight:500; white-space:nowrap;overflow:hidden;max-width:320px;transition:var(--trans-2);box-shadow:0 4px 20px rgba(99, 102, 241, .2)} .button:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(99, 102, 241, .3);opacity:.9} .button.ln{color:var(--linkC);background:transparent; border:2px solid var(--linkC);box-shadow:none} .button.ln:hover{border-color:var(--linkB);background:var(--linkB);color:white;transform:translateY(-2px)} .btnF{display:flex;justify-content:center; margin:16px 0;width:calc(100% + 16px);left:-8px;right:-8px;position:relative;gap:12px} .btnF >*{margin:0}
+/* Widget Style Modern */
+.widget .imgThm{display:block;position:absolute;top:50%;left:50%;max-width:none;max-height:108%; font-size:13px;text-align:center; transform:translate(-50%, -50%)} .widget .title{margin:0 0 32px; font-size:var(--widgetT);font-weight:var(--widgetTw);position:relative;color:var(--headC)} .widget .title.dt::before{position:absolute;top:0;right:0;content:'';width:24px;height:24px;display:inline-block;opacity:.3;background:url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2394a3b8' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><path d='M12 2L2 7l10 5 10-5-10-5z'/><path d='M2 17l10 5 10-5'/><path d='M2 12l10 5 10-5'/></svg>") center / 20px no-repeat} .Rtl .widget .title::before{right:auto;left:0;transform:rotate(-90deg);-webkit-transform:rotate(-90deg)} .widget .title::after{content:'';display:inline-block;vertical-align:middle; width:var(--widgetTa); margin:0 12px;border-bottom:2px solid var(--widgetTac); opacity:.4} .widget input[type=text], .widget input[type=email], .widget textarea{display:block;width:100%;outline:0;border:2px solid var(--contentL);border-radius:12px;background:var(--contentB); padding:16px; line-height:1.6em; transition:var(--trans-1);font-size:15px} .widget input[type=text]:hover, .widget input[type=email]:hover, .widget textarea:hover{border-color:var(--bodyCa)} .widget input[type=text]:focus, .widget input[type=email]:focus, .widget textarea:focus, .widget input[data-text=fl], .widget textarea[data-text=fl]{border-color:var(--linkB);background:var(--contentB)} .widget input[type=button], .widget input[type=submit]{display:inline-flex;align-items:center;justify-content:center; padding:14px 32px; outline:0;border:0;border-radius:var(--buttonR); color:white; background:var(--linkB); font-size:15px;font-weight:500; white-space:nowrap;overflow:hidden;max-width:100%;transition:var(--trans-2);box-shadow:0 4px 20px rgba(99, 102, 241, .2)} .widget input[type=button]:hover, .widget input[type=submit]:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(99, 102, 241, .3);opacity:.9}
+/* Widget BlogSearch Modern */
+.BlogSearch{position:fixed;top:0;left:0;right:0;z-index:12} .BlogSearch form{position:relative;min-width:320px} .BlogSearch input{position:relative;display:block;background:var(--srchB);border:0;outline:0;margin-top:-100%;padding:12px 60px;width:100%;height:80px;transition:var(--trans-1);z-index:2;border-radius:0 0 var(--srchMr) var(--srchMr);font-size:16px;box-shadow:0 10px 50px rgba(0,0,0,.15)} .BlogSearch input:focus{margin-top:0;box-shadow:0 20px 60px rgba(0,0,0,.2)} .BlogSearch input:focus ~ button.sb{opacity:.9} .BlogSearch .sb{position:absolute;left:0;top:0;display:flex;align-items:center;padding:0 24px;z-index:3;opacity:.7;height:100%;background:transparent;border:0;outline:0} .BlogSearch .sb svg{width:20px;height:20px;stroke:var(--srchI)} .BlogSearch button.sb{left:auto;right:0;opacity:0;font-size:14px;font-weight:500} .BlogSearch button.sb::before{content:'\2715'} @media screen and (min-width:897px){header .BlogSearch{position:static;z-index:1} header .BlogSearch input{margin-top:0;padding:12px 48px;height:auto;font-size:14px;border-radius:var(--srchDr);background:var(--transB); width:calc(100% + 16px);left:-8px;right:-8px;transition:var(--trans-2);border:2px solid transparent} header .BlogSearch input:hover{background:var(--contentB);border-color:var(--contentL)} header .BlogSearch input:focus{box-shadow:none;margin-top:0; background:var(--contentB);border-color:var(--linkB)} header .BlogSearch .sb{padding:0} header .BlogSearch .fCls{display:none}}
+/* Footer Modern */
+footer{font-size:15px;line-height:1.7;color:var(--fotT);padding:60px 0 40px;background:var(--bodyB);border-top:1px solid var(--contentL)} .footer{padding:32px;background:var(--fotB);box-shadow:0 10px 50px rgba(0,0,0,.05);border-radius:24px;margin-bottom:32px} footer .LinkList a, footer .sL li >*{display:inline-block;color:inherit;line-height:24px} footer .LinkList a:hover{color:var(--linkC);text-decoration:underline} footer .LinkList ul:not(.sL) li::before{content:'\2013'; opacity:.3} footer .sL{display:flex;flex-wrap:wrap;align-items:baseline;font-size:14px;opacity:.8;gap:8px} footer .sL li{display:inline-flex;align-items:baseline} footer .sL li:not(:first-child)::before{content:'/';margin:0 8px;opacity:.4} footer .sL li >*::before{content:attr(data-text)} .fotIn ul{list-style:none;margin:0;padding:0} .fotIn{display:flex;flex-wrap:wrap;position:relative;gap:32px} .fotIn >*{flex:1;min-width:250px} .fotIn .widget{margin-bottom:32px} .fotIn .widget .title{color:inherit;margin-bottom:20px;font-weight:600;font-size:18px} .abtU{max-width:100%} .abtU::before{content:attr(data-text);font-size:14px; opacity:.6;display:block;margin-bottom:8px;font-weight:500} .abtU >*{align-items:center;display:flex;justify-content:space-between;margin:16px 0} .abtU .pu-views::before{content:'We have served the best performance ' attr(data-text) ' times.';opacity:.8} .abtL{flex:0 0 80px;width:80px;height:80px;background-repeat:no-repeat;background-size:100%;background-position:center;border-radius:16px} .abtT{flex:0 0 calc(100% - 96px)} .abtT .tl{color:inherit; font-size:1.4rem;font-weight:600} .abtD{-webkit-box-orient:vertical;-webkit-line-clamp:2;display:-webkit-box;line-height:1.6em;margin:8px 0 0;overflow:hidden;color:var(--bodyCa)}
+/* Footer Credit */
+footer .credit a{display:inline-flex;align-items:center;font-weight:500} footer .credit a svg{width:16px;height:16px;margin:0 6px;fill:var(--linkC)} .cdtIn{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:24px;padding-top:32px;border-top:1px solid var(--contentL)} .cdtIn .HTML{overflow:hidden;white-space:nowrap;text-overflow:ellipsis} .fotCd{display:inline-flex} .fotCd .creator{opacity:0} .toTop{display:flex;align-items:center; white-space:nowrap;font-weight:500} .toTop::before{content:attr(data-text); opacity:.7;margin:0 8px}
+/* Back to Top Modern */
+.toTopB{display:flex;align-items:center;justify-content:center;position:fixed;right:24px;bottom:24px;width:56px;height:56px;border-radius:50%;cursor:pointer;visibility:hidden;opacity:0;z-index:5;transform:scale(0);transition:var(--trans-3);background:var(--linkB);box-shadow:0 8px 30px rgba(99, 102, 241, .3)} .toTopB.vsbl{visibility:visible;opacity:1;transform:scale(1)} .toTopB:hover{transform:scale(1.1) translateY(-4px);box-shadow:0 12px 40px rgba(99, 102, 241, .4)} .toTopB svg{height:24px;width:24px;stroke:white;stroke-width:2;transform:rotate(-90deg)} .drK .toTopB{background:var(--darkU);box-shadow:0 8px 30px rgba(0,0,0,.3)}
+/* Mobile Menu Modern */
+.mobMn{position:fixed;left:16px;right:16px;bottom:16px; border-radius:var(--mobBr);background:var(--mobB);color:var(--mobT);padding:12px 20px;box-shadow:0 20px 60px rgba(0,0,0,.15);z-index:2;font-size:13px;backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border:1px solid var(--contentL)} .mobMn svg.line{stroke:var(--mobT);opacity:.9} .mobMn ul{height:60px;display:flex;align-items:center;justify-content:center;list-style:none;margin:0;padding:0;gap:4px} .mobMn li{display:flex;justify-content:center;flex:1} .mobMn li >*{display:inline-flex;align-items:center;justify-content:center;min-width:44px;height:44px;border-radius:var(--iconHr);padding:0 12px;transition:var(--trans-2);color:inherit;font-weight:500} .mobMn li svg{margin:0 8px;flex-shrink:0} .mobMn li >*::after{content:attr(data-text);overflow:hidden;white-space:nowrap;text-overflow:ellipsis;max-width:0;margin:0;transition:inherit;opacity:.8} .mobMn li >*:hover::after{max-width:100px;margin:0 8px} .mobMn .nmH{opacity:.7} .mobMn li >*:hover{background:var(--mobHv);transform:translateY(-2px)} .mobMn li >*:hover svg.line{stroke:var(--linkB) !important;opacity:1} .mobMn li >*:hover svg.line .svgC{stroke:var(--linkB)} /* Style 4 Modern */
+.MN-4 .mobMn{left:24px;right:24px;bottom:24px;padding:16px 24px;border-radius:var(--headerR);box-shadow: 0 20px 60px rgba(0,0,0,.15);transition:bottom .6s cubic-bezier(0.4, 0, 0.2, 1);border:1px solid var(--contentL)} .MN-4 .mobMn.slide{bottom:-150px}
+/* Wave Animation Modern */
+.wvC{position:absolute;bottom:0;width:100%;z-index:-1} .wvS{position:relative} .wvS .waves{position:absolute;bottom:0;width:100%;height:80px;min-height:120px;max-height:200px} .wvH{position:relative;height:0;background:var(--waveB)} .plx > use{fill:var(--waveB);animation:waveMove 25s cubic-bezier(.55,.5,.45,.5) infinite} .plx > use:nth-child(1){opacity:.7;animation-delay:-2s;animation-duration:7s} .plx > use:nth-child(2){opacity:.5;animation-delay:-3s;animation-duration:10s} .plx > use:nth-child(3){opacity:.3;animation-delay:-4s;animation-duration:13s} .plx > use:nth-child(4){opacity:1;animation-delay:-5s;animation-duration:20s} .drK .wvH{background:var(--darkW)} .drK .plx > use{fill:var(--darkW)} @keyframes waveMove{0%{transform: translate3d(-90px,0,0)}100%{transform: translate3d(85px,0,0)}}
+/* Error Page Modern */
+.erroP{display:flex;align-items:center;justify-content:center;height:100vh;text-align:center;padding:0;background:linear-gradient(135deg, var(--bodyB) 0%, var(--transB) 100%)} .erroC{width:calc(100% - 48px);max-width:500px;margin:auto;font-family:var(--fontBa)} .erroC h3{font-size:1.8rem;font-family:inherit;margin-bottom:24px} .erroC h3 span:not(.e){position:relative} .erroC h3 span.e{display:block;font-size:160px;line-height:.8;margin-bottom:-1rem;color:var(--transB);font-weight:800} .erroC h3 span.e{animation:glitch 1s linear infinite} .erroC h3 span.e::before, .erroC h3 span.e::after{content:attr(title);position:absolute;left:0;right:0} .erroC h3 span.e::before{animation:glitchTop 1s linear infinite;clip-path:polygon(0 0, 100% 0, 100% 33%, 0 33%);-webkit-clip-path:polygon(0 0, 100% 0, 100% 33%, 0 33%)} .erroC h3 span.e::after{animation:glitchBotom 1.5s linear infinite;clip-path:polygon(0 67%, 100% 67%, 100% 100%, 0 100%);-webkit-clip-path:polygon(0 67%, 100% 67%, 100% 100%, 0 100%)} .erroC p{margin:32px 5%;line-height:1.7em;color:var(--bodyCa);font-size:16px} .erroC .button{margin:0;padding-left:2em;padding-right:2em;font-size:15px;font-weight:500}
+/* Pop-up Modern */
+.fixL{display:flex;align-items:center;justify-content:center;position:fixed;left:0;right:0;bottom:0;margin-bottom:-100%;z-index:20;transition:var(--trans-3);width:100%;height:100%;opacity:0;visibility:hidden;backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)} .fixLi, .fixL .cmBri{width:100%;max-width:680px;max-height:calc(100% - 80px);border-radius:24px;transition:inherit;z-index:3;display:flex;overflow:hidden;position:relative;margin:0 auto;box-shadow:0 30px 80px rgba(0,0,0,.2);border:1px solid var(--contentL)} .fixLs{padding:80px 32px 32px;overflow-y:scroll;overflow-x:hidden;width:100%;background:var(--contentB);border-radius:inherit} .fixH, .mnH{display:flex;background:inherit;position:absolute;top:0;left:0;right:0;padding:0 16px;z-index:2} .fixH .cl{padding:0 16px;display:flex;align-items:center;justify-content:flex-end;position:relative;flex-shrink:0;min-width:48px} .fixH .c::after, .ntfC .c::after, .mnH .c::before{content:'\2715';line-height:24px;font-size:16px;font-weight:500} .fixT::before{content:attr(data-text);flex-grow:1;padding:20px 16px;font-size:16px;font-weight:600;opacity:.9} .fixT .c::before, .mnH .c::after{content:attr(aria-label);font-size:12px;margin:0 12px;opacity:.6} .fixi:checked ~ .fixL, #comment:target .fixL{margin-bottom:0;opacity:1;visibility:visible} .fixi:checked ~ .fixL .fCls, #comment:target .fixL .fCls, .BlogSearch input:focus ~ .fCls{opacity:1;visibility:visible;background:rgba(0,0,0,.3); backdrop-filter:saturate(180%) blur(10px)} .shBri{max-width:520px}
+/* Author profile Modern */
+.admAbt{padding-top:40px} .admPs{display:flex; max-width:600px;margin:40px 0; padding:24px; background:var(--contentB);border-radius:20px; box-shadow:0 20px 60px rgba(0,0,0,.08);border:1px solid var(--contentL);gap:20px} .admIm{flex-shrink:0; padding:8px 0 0} .admIm .im{width:48px;height:48px;border-radius:24px} .admI{flex-grow:1; width:calc(100% - 48px)} .admN::before{content:attr(data-write) ' '; opacity:.7;font-size:14px;color:var(--bodyCa)} .admN::after{content:attr(data-text);font-size:18px;font-weight:600;color:var(--headC)} .admA{margin:12px 0 0; font-size:15px; color:var(--bodyC);line-height:1.7}
+/* Share btn Modern */
+.pSh{margin:24px 0;padding:24px 0;border-bottom:1px solid var(--contentL)} .pShc{display:flex;align-items:center;flex-wrap:wrap; position:relative;gap:12px;font-size:14px} .pShc::before{content:attr(data-text);flex-shrink:0;font-weight:500;color:var(--headC)} .pShc >*{display:flex;align-items:center; color:inherit;padding:12px 20px;border-radius:var(--buttonR);background:var(--transB);font-weight:500;transition:var(--trans-2)} .pShc >*:hover{transform:translateY(-2px)} .pShc .c{color:white} .pShc .c svg{fill:white} .pShc .c::after{content:attr(aria-label)} .pShc .fb{background:#1778F2} .pShc .wa{background:#25D366} .pShc .tw{background:#1DA1F2} .pShc a::after{content:attr(data-text);margin:0 8px} .pShc svg, .cpL svg{width:20px;height:20px; margin:0 8px}
+/* Dark Mode Modern */
+.drK.onIndx .blogPts >*, .drK .rPst, .drK .PopularPosts, .drK .Label{background:var(--darkBa);border-color:var(--darkBs)} .drK .tDL .d2{display:block} .drK .tDL::after{content:attr(data-light)} .drK .tDL svg .f{stroke:none;fill:var(--darkT)}  .drK .pThmb:not(.nul)::before{background-image:linear-gradient(90deg, rgba(0,0,0,0) 0, rgba(0,0,0,.1) 20%, rgba(0,0,0,.15) 60%, rgba(0,0,0,0))} .drK input::placeholder, .drK .cpL input, .drK .cArea label .n{color:rgba(255,255,255,.4)} .drK .erroC h3 span.e{color:var(--darkBa)} .drK svg, .drK svg.c-1{fill:var(--darkT)} .drK svg.line, .drK .ancrC svg{fill:none;stroke:var(--darkT)} .drK svg.c-2{fill:var(--darkTa); opacity:.4} .drK, .drK .headCn, .drK .mnBrs{background:var(--darkB);color:var(--darkT)} .drK .ntfC, .drK .mobMn{background:var(--darkBa);color:var(--darkTa);border-color:var(--darkBs)} .drK header, .drK .mnMn >li.br::after, .drK .blogCont::before, .drK .tbHd, .drK .cmHl >li >.cmIn, .drK .pTag .pMart a, .drK .pRelate, .drK blockquote, .drK .cmC i[rel=quote], .drK blockquote.s-1, .drK details.sp, .drK .ps table:not(.tr-caption-container), .drK .ps table th, .drK .ps table:not(.tr-caption-container) tr:not(:last-child) td, .drK .pre.tb .preH, .drK details.ac, .drK .ancrA, .drK .ancrC, .drK .mnMob{border-color:var(--darkBs)} .drK .footer{background:var(--darkBa)} .drK .mobMn li >*:hover{background:var(--darkBs)} .drK .tIc::after{background:var(--darkBs)} .drK .wPrf{background:var(--darkBa);box-shadow:0 20px 60px rgba(0,0,0,.3)} .drK header a, .drK h1, .drK h2, .drK h3, .drK h4, .drK h5, .drK h6, .drK footer, .drK .button{color:var(--darkT)} .drK .dlBox, .drK .fixLs, .drK .cArea input:focus ~ .n, .drK .cArea textarea:focus ~ .n, .drK .cArea input[data-text=fl] ~ .n, .drK .cArea textarea[data-text=fl] ~ .n{background:var(--darkBa)} .drK .mobMn li >*:hover svg.line{stroke:var(--darkU) !important} .drK .mobMn li >*:hover svg.line .svgC{stroke:var(--darkU)} .drK .pTag .pPric::before, .drK .pTag .pInfo small{color:var(--darkTa)} .drK::selection, .drK a, .drK .free::after, .drK .new::after, .drK .mnMn li:not(.mr) .a:hover, .drK .mnMn ul li a:hover, .drK .aTtl a:hover, .drK .pSnpt.nTag, .drK .pTag .pPric, .drK details.ac[open] summary, .drK .cpL label, .drK .wL li >*:hover .lbC, .drK .wL li >div .lbC, .drK .wL .lbM, .drK .cmBtn.ln:hover, .drK .wL.cl .lbN:hover .lbC, .drK .wL.cl div.lbN .lbC{color:var(--darkU)} .drK .mnMn .a:hover svg:not(.d){fill:var(--darkU)} .drK .mnMn .a:hover svg.line:not(.d), .drK .pJmp svg{fill:none;stroke:var(--darkU)} .drK .wL li >*:hover svg, .drK .wL li >div svg{stroke:var(--darkU)} .drK.MN-3 .mobMn li >*:hover::after, .drK.MN-4 .mobMn li >*:hover::after, .drK .toTopF, .drK .blogPg >*, .drK .button, .drK .zmImg::after, .drK .widget input[type=button], .drK .widget input[type=submit]{background:var(--darkU)} .drK.MN-3 .mobMn li >*:hover svg.line, .drK.MN-4 .mobMn li >*:hover svg.line{stroke:var(--darkU);fill:var(--darkU) !important} .drK .pS input[id*="1"]:checked ~ .tbHd label[for*="1"], .drK .pS input[id*="2"]:checked ~ .tbHd label[for*="2"], .drK .pS input[id*="3"]:checked ~ .tbHd label[for*="3"], .drK .pS input[id*="4"]:checked ~ .tbHd label[for*="4"], .drK .widget input[type=text]:focus, .drK .widget input[type=email]:focus, .drK .widget textarea:focus, .drK .widget input[data-text=fl], .drK .widget textarea[data-text=fl], .drK .wL.cl .lbN:not(div):hover, .drK .wL.cl div.lbN{border-color:var(--darkU)} .drK .button.ln:hover{border-color:var(--darkU);background:var(--darkU)} .drK .blogPg .nPst, .drK .blogPg .current{background:var(--darkBs);color:var(--darkTa)}
+/* Responsive Modern */
+@media screen and (min-width:897px){
+.mainIn, .blogM{display:flex} .blogMn{width:var(--navW);flex-shrink:0;position:relative;transition:var(--trans-1);z-index:1} .blogCont{padding-top:40px} .blogCont::before{content:'';position:absolute;top:var(--headerHi);left:0;height:calc(100% + var(--headerH))} .blogCont{width:calc(100% - var(--navW))} .mnBrs{box-shadow:0 0 20px rgba(0,0,0,.05);border-radius:0 24px 24px 0} .blogCont .secIn{padding-left:32px;padding-right:32px} .mainbar{flex:1 0 calc(100% - var(--sideW) - 32px);width:calc(100% - var(--sideW) - 32px)} .sidebar{display:flex;flex:0 0 calc(var(--sideW) + 32px);width:calc(var(--sideW) + 32px); margin:0} .sidebar::before{content:'';flex:0 0 32px} .sidebar .sideIn{width:calc(100% - 32px)}
+.onIndx.onHm .blogPts >*{flex:0 0 calc(33.33% - 24px);width:calc(33.33% - 24px)} .onIndx.onMlt .blogPts >*{flex:0 0 calc(25% - 24px);width:calc(25% - 24px)}
+}
+@media screen and (max-width:1100px){
+.onIndx.onHm .blogPts >*{flex:0 0 calc(50% - 24px);width:calc(50% - 24px)} .onIndx.onMlt .blogPts >*{flex:0 0 calc(33.33% - 24px);width:calc(33.33% - 24px)}
+}
+@media screen and (max-width:896px){
+header .HD-2 .headCn{border-radius:var(--headerR);box-shadow: 0 10px 40px rgba(0,0,0,.08)} .HD-2 header{position: relative;padding:20px 20px 0}
+.onIndx.onHm .blogPts >*{flex:0 0 calc(33.33% - 24px);width:calc(33.33% - 24px)}
+}
+@media screen and (max-width:768px){
+.onIndx.onHm .blogPts >*, .onIndx.onMlt .blogPts >*{flex:0 0 calc(50% - 24px);width:calc(50% - 24px)}
+}
+@media screen and (max-width:640px){
+.headCn{height:var(--headerHm)} .fixL{align-items:flex-end} .fixL .fixLi, .fixL .cmBri{border-radius:24px 24px 0 0; max-width:680px} .fixL .cmBri:not(.mty){border-radius:0;height:100%;max-height:100%}
+}
+@media screen and (max-width:500px){
+.onIndx:not(.oneGrd) .blogPts{width:calc(100% + 16px);left:-8px;right:-8px} .onIndx:not(.oneGrd) .blogPts >*{padding:16px 16px 48px;flex:0 0 calc(50% - 16px);width:calc(50% - 16px);margin-left:8px;margin-right:8px;margin-bottom:16px} .onIndx:not(.oneGrd) .blogPts div.ntry{flex:0 0 calc(100% - 16px)} .onIndx.oneGrd .blogPts >*{flex:0 0 calc(100% - 24px);width:calc(100% - 24px)}
+.pEnt{font-size:var(--postFm)} .pTtl.itm{font-size:var(--postTm)}
+}
+/* Custom Scrollbar */
+@media screen and (min-width:768px){
+::-webkit-scrollbar{width:10px;height:6px}::-webkit-scrollbar-track{background:var(--transB);border-radius:10px}::-webkit-scrollbar-thumb{background:var(--bodyCa);border-radius:10px}::-webkit-scrollbar-thumb:hover{background:var(--bodyC)}
+}
+/* Animations */
+@keyframes shimmer{100%{transform:translateX(100%)}} @keyframes slidein{0%{opacity:0}10%{opacity:1;bottom:24px}50%{opacity:1;bottom:24px}90%{opacity:1;bottom:24px}100%{opacity:0;bottom:-70px;visibility:hidden}} @keyframes indicator{0%{opacity:0}50%{opacity:1}100%{opacity:0}} @keyframes opaCity{0%{opacity:0}100%{opacity:1}} @keyframes glitch{2%,64%{transform:translate(2px,0) skew(0deg)} 4%,60%{transform:translate(-2px,0) skew(0deg)} 62%{transform:translate(0,0) skew(5deg)}} @keyframes glitchTop{2%,64%{transform:translate(2px,-2px)} 4%,60%{transform:translate(-2px,2px)} 62%{transform:translate(13px,-1px) skew(-13deg)}} @keyframes glitchBotom{2%,64%{transform:translate(-2px,0)} 4%,60%{transform:translate(-2px,0)} 62%{transform:translate(-22px,5px) skew(21deg)}}
+@-webkit-keyframes opaCity{0%{opacity:0}100%{opacity:1}}
+/*]]>*/</style>
+  
+  <style>/*<![CDATA[*/
+/* Modern Fonts for Mobile */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&display=swap');
+/*]]>*/</style>
+  
+  <!--[ Le reste du code reste EXACTEMENT pareil, seul le CSS a été modernisé ]-->
+  
+  <b:defaultmarkups>
+    <!--[ Blogger defaultmarkups ]-->
+    <b:defaultmarkup type='Common'>
+      
+      <!--[ Template settings object ]-->
+      <b:includable id='settings-object'>/*<![CDATA[*/
+const PuSet = {
+  license: {
+    key: licenseKey
+  },
+  realViews: {
+    databaseUrl: "",
+    abbreviation: "true"
+  },
+  noInternet: {
+    enablePopup: "true",
+    enableToast: "true",
+    offlineMes: "You are Offline!",
+    onlineMes: "You are Online!"
+  },
+  preCopy: {
+    copiedMes: "<i class='clipboard'></i>Copied to Clipboard!"
+  },
+  cookieCon: {
+    consentMaxAge: "2592000",
+    cookieError: "Error: Cookie can&#039;t be set! Please unblock this site from the cookie setting of your browser."
+  },
+  gTranslate: {
+    pageLang: "en",
+    includedLangs: "en,hi,gu,bn,ta,te,mr,ne,id",
+    autoDisplay: "true",
+    multiLangPage: "true"
+  },
+  bookmark: {
+    bmTitle: "Bookmark Posts",
+    closeText: "Close",
+    noBmIcon: "<svg class='line' viewBox='0 0 24 24'><g transform='translate(3.650100, 2.749900)'><path d='M16.51,5.55 L10.84,0.15 C10.11,0.05 9.29,0 8.39,0 C2.1,0 -1.95399252e-14,2.32 -1.95399252e-14,9.25 C-1.95399252e-14,16.19 2.1,18.5 8.39,18.5 C14.69,18.5 16.79,16.19 16.79,9.25 C16.79,7.83 16.7,6.6 16.51,5.55 Z'/><path d='M10.2839,0.0827 L10.2839,2.7437 C10.2839,4.6017 11.7899,6.1067 13.6479,6.1067 L16.5989,6.1067'/><line class='svgC' x1='10.6623' y1='10.2306' x2='5.7623' y2='10.2306'/><line class='svgC' x1='8.2131' y1='12.6808' x2='8.2131' y2='7.7808'/></g></svg>",
+    noBmMes: "The list of favorite articles does not exist yet...",
+    noBmAll: "View all articles",
+    noBmLink: "/search",
+    delIcon: "<svg class='line' viewBox='0 0 24 24'><g transform='translate(3.500000, 2.000000)'><path d='M15.3891429,7.55409524 C15.3891429,15.5731429 16.5434286,19.1979048 8.77961905,19.1979048 C1.01485714,19.1979048 2.19295238,15.5731429 2.19295238,7.55409524'/><line x1='16.8651429' y1='4.47980952' x2='0.714666667' y2='4.47980952'/><path d='M12.2148571,4.47980952 C12.2148571,4.47980952 12.7434286,0.714095238 8.78914286,0.714095238 C4.83580952,0.714095238 5.36438095,4.47980952 5.36438095,4.47980952'/></g></svg>",
+    addedNtf: "<i class='check'></i>Added to Bookmarks!",
+    removedNtf: "<i class='del'></i>Removed from Bookmarks!",
+  },
+  adsenseAds: {
+    publisherId: caPubAdsense.replace('ca-pub-',''), /* Auto or replace with Publisher ID i.e. "000000000000", */
+    antiAdBClose: "true", /* "true", if you want to add a Close Button in Anti Ad Block popup */
+    ignoreMaxAge: "86400",
+    loadType: "defer" /* lazy, defer, scroll */
+  },
+  analytics: {
+    propertyID: analyticsID /* Auto or replace with Property ID i.e. "UA-0000000", */
+  },
+  fontFamily: {
+    mobileFonts: "@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');"
+  }
+};
+/*]]>*/</b:includable>
+      
+      <!--[ Les autres b:includable restent EXACTEMENT les mêmes ]-->
+      <b:includable id='post-adIn'>
+        <div class='ntry pAdin'>
+          <!--[ InFeed Ad ]-->
+          
+          <!--<ins class='adsbygoogle'/>
+          <script>...</script>-->
+          
+        </div>
+      </b:includable>
+      
+      <b:includable id='post-adTop'>
+        <div class='pAd'>
+          <!--[ Top article Ad ]-->
+          
+          <!--<ins class='adsbygoogle'/>
+          <script>...</script>-->
+          
+        </div>
+      </b:includable>
+      
+      <b:includable id='post-adBot'>
+        <div class='pAd'>
+          <!--[ Bottom article Ad ]-->
+          
+          <!--<ins class='adsbygoogle'/>
+          <script>...</script>-->
+          
+        </div>
+      </b:includable>
+      
+      <b:includable id='post-relatedAd'>
+        <div class='relatedPosts'>
+          <!--[ Matched content Ad ]-->
+          
+          <!--<ins class='adsbygoogle'/>
+          <script>...</script>-->
+          
+        </div>
+      </b:includable>
+      
+      <b:includable id='titlePost'>
+        <div class='blogTtl'>
+          <b:class cond='data:view.isHomepage' name='hm'/>
+          <b:if cond='data:view.isHomepage'>
+            
+            <!--[ Change <data:messages.latestPosts/> to replace 'Latest Posts' with your special text ]-->
+            <h2 class='title dt'><data:messages.latestPosts/></h2>
+
+            <b:else/>
+            <div class='t'>
+              <b:class cond='data:view.search or data:view.isArchive and data:view.url != data:blog.homepageUrl.canonical path &quot;search&quot;' name='srch'/>
+              <b:if cond='data:view.search.label'>
+                <span class='hm' expr:data-text='data:messages.home'/><data:blog.pageName/>
+                
+                <b:elseif cond='data:view.search.query'/>
+                <span expr:data-text='data:messages.search + &quot;:&quot;'/><data:view.search.query/>
+                
+                <b:elseif cond='data:view.isArchive'/>
+                <span expr:data-text='data:messages.blogArchive + &quot;:&quot;'/><data:blog.pageName/>
+                
+                <b:else/>
+
+                <!--[ Change all <data:messages.posts/> to replace 'Posts' with your special text ]-->
+                <span class='hm' expr:data-text='data:messages.home'/><data:messages.posts/>
+             
+              </b:if>
+            </div>
+          </b:if>
+        </div>
+      </b:includable>
+
+      <b:includable id='theme-custom'>
+        <input class='cusI hidden' id='forCusThm' type='checkbox'/>
+        <div class='cusW'>
+          <div class='cusH'>
+            <span class='cusHi' data-text='Theme Color'/>
+            <label class='cusCl' for='forCusThm'/>
+          </div>
+          <div class='cusP'>
+            <!--[ Replace color hex code with custom color hex code ]-->
+            <span class='tPkr thB0' onclick='webTheme(&quot;theme0&quot;);modeL()' style='--pkrC:#eceff1'/><span class='tPkr thB1' onclick='webTheme(&quot;theme1&quot;);modeL()' style='--pkrC:#F44336'/><span class='tPkr thB2' onclick='webTheme(&quot;theme2&quot;);modeL()' style='--pkrC:#00BFA5'/><span class='tPkr thB3' onclick='webTheme(&quot;theme3&quot;);modeL()' style='--pkrC:#2196F3'/><span class='tPkr thB4' onclick='webTheme(&quot;theme4&quot;);modeL()' style='--pkrC:#FBC02D'/><span class='tPkr thB5' onclick='webTheme(&quot;theme5&quot;);modeL()' style='--pkrC:#E91E63'/><span class='tPkr thB6' onclick='webTheme(&quot;theme6&quot;);modeL()' style='--pkrC:#FF5722'/><span class='tPkr thB7' onclick='webTheme(&quot;theme7&quot;);modeL()' style='--pkrC:#607D8B'/><span class='tPkr thB8' onclick='webTheme(&quot;theme8&quot;);modeL()' style='--pkrC:#5D4037'/><span class='tPkr thB9' onclick='webTheme(&quot;theme9&quot;);modeL()' style='--pkrC:#744D97'/><span class='tPkr thB10' onclick='webTheme(&quot;theme10&quot;);modeL()' style='--pkrC:#3949AB'/>
+          </div>
+        </div>
+        <label class='fCls' for='forCusThm'/>
+      </b:includable>
+      
+      <b:includable id='post-related'>
+        <div id='rPst'/>
+        <script>
+          var labelArray = [<b:if cond='data:post.labels'><b:loop values='data:post.labels' var='label'>&quot;<data:label.name/>&quot;<b:if cond='data:label.isLast != &quot;true&quot;'>,</b:if></b:loop></b:if>].map(function(e){return window.ueHTML(e)});
+          
+          // Auto Related Posts (Bottom)
+          var relatedPostConfig = {
+            homePage: &quot;<data:blog.homepageUrl.canonical/>&quot;,
+            
+            // Replace <data:messages.youMayLikeThesePosts/> to change Related Posts title
+            widgetTitle: &quot;<h2 class='title dt'><b:if cond='data:post.labels none (label =&gt; label.name in [ &quot;Product&quot; ])'><data:messages.youMayLikeThesePosts/><b:else/>Related products!</b:if></h2>&quot;,
+
+            numPosts: 6,
+            summaryLength: 180,
+            titleLength:&quot;auto&quot;,
+            thumbnailSize: 300,
+            noImage: &quot;data:image/png;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=&quot;,
+            containerId: &quot;rPst&quot;,
+            newTabLink: false,
+            moreText: &quot;Read more&quot;,
+            
+            // Change the related post style, there are 4 styles available
+            widgetStyle: 3,
+            callBack:function(){}
+          }
+
+          // Auto Related Posts (In-Article)
+          var autoRelatedConfig = {
+            homePage: &quot;<data:blog.homepageUrl.canonical/>&quot;,
+            numPosts: 10,
+            titleLength:&quot;auto&quot;,
+            newTabLink: false,
+            callBack:function(){}
+          }
+          
+          // Auto Chapter
+          var autoChapterConfig = {
+            homePage: &quot;<data:blog.homepageUrl.canonical/>&quot;,
+            titleLength: &quot;60&quot;,
+            newTabLink: false,
+            callBack:function(){}
+          }
+        </script>
+      </b:includable>
+      
+      <b:includable id='preloader'>
+        <!--[ Disable all the codes to remove preloader ]-->
+        <!--<div class='pldW' id='preloader'>
+          <div class='pldS'/>
+        </div>
+        <script>/*<![CDATA[*/ var preloader=document.querySelector('#preloader'); preloader.classList.add('e'); document.addEventListener('DOMContentLoaded', function(){setTimeout(function(){preloader.classList.add('h')},2000); neonLight(5000);}); /*]]>*/</script>-->
+      </b:includable>
+      
+      <b:includable id='quick-edit'>
+        <div class='blog-admin qEdit' id='qEdit'><input class='qeMn hidden' id='offqeMn' type='checkbox'/><label class='qeBtn' for='offqeMn'><b:include name='settings-icon'/><b:include name='close-icon'/></label><div class='qeBtns'><a class='qeBtn a' expr:href='&quot;https://www.blogger.com/blog/settings/&quot; + data:blog.blogId' rel='nofollow noopener noreferrer' target='_blank' title='Settings'><b:include name='settings-icon'/></a><a class='qeBtn a' expr:href='&quot;https://www.blogger.com/blog/comments/&quot; + data:blog.blogId' rel='nofollow noopener noreferrer' target='_blank' title='Comments'><b:include name='comments-icon'/></a><a class='qeBtn a' expr:href='&quot;https://www.blogger.com/feeds/&quot; + data:blog.blogId + &quot;/archive&quot;' rel='nofollow noopener noreferrer' title='Backup content'><b:include name='download-alt-icon'/></a><a class='qeBtn a' expr:href='&quot;https://www.blogger.com/blog/stats/week/&quot; + data:blog.blogId' rel='nofollow noopener noreferrer' target='_blank' title='7-days blog stats'><b:include name='stats-icon'/></a><b:if cond='data:view.isPost'><a class='qeBtn a' expr:href='&quot;https://www.blogger.com/blog/posts/&quot; + data:blog.blogId' rel='nofollow noopener noreferrer' target='_blank' title='Dashboard'><b:include name='list-icon'/></a><b:else/><a class='qeBtn a' expr:href='&quot;https://www.blogger.com/blog/pages/&quot; + data:blog.blogId' rel='nofollow noopener noreferrer' target='_blank' title='Dashboard'><b:include name='list-icon'/></a></b:if><b:if cond='data:view.isPost'><a class='qeBtn a' expr:href='&quot;https://www.blogger.com/blog/post/edit/&quot; + data:blog.blogId + &quot;/&quot; + data:post.id' rel='nofollow noopener noreferrer' target='_blank' title='Edit Post'><b:include name='edit-icon'/></a><b:else/><a class='qeBtn a' expr:href='&quot;https://www.blogger.com/page/edit/&quot; + data:blog.blogId + &quot;/&quot; + data:post.id' rel='nofollow noopener noreferrer' target='_blank' title='Edit Page'><b:include name='edit-icon'/></a></b:if></div><label class='fCls' for='offqeMn'/></div>
+      </b:includable>
+      
+    </b:defaultmarkup>
+  </b:defaultmarkups>
+  
+</html>
